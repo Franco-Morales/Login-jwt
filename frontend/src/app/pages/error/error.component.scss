@@ -1,0 +1,36 @@
+img#img-error {
+    width: 90%;
+    margin: 5% 5% 0 5%;
+}
+
+a.link-secondary{
+    margin-left: 5%;
+}
+
+h1 {
+    margin-left: 5%; 
+    margin-top: 5%;
+}
+
+.btn {
+    margin: 15% 5%;
+}
+
+
+@media (min-width: 768px) {
+    img#img-error {
+        width: 60%;
+        margin: 5% 20% 0 20%;
+    }
+    .btn, h1{
+        margin: 2.5% 5%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    img#img-error {
+        width: 50%;
+        margin: 1% 25% 0 25%;
+    }
+}

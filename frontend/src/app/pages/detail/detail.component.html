@@ -1,0 +1,35 @@
+<ng-container *ngIf="isLoading; else loaded">
+    <app-spinner></app-spinner>
+</ng-container>
+<ng-template #loaded>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-12 col-md-4">
+                <img [src]="product.imgUrl" alt="Image Product" class="img-fluid rounded shadow mb-3">
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">{{product.title}}</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><b>Price</b>: ${{product.price}}</p>
+                        <p class="card-text"><b>Company</b>: {{product.company}}</p>
+                        <p class="card-text text-success" *ngIf="product.stock">
+                            <i class="bi bi-check-circle-fill me-2"></i> Aviable stock
+                        </p>
+                        <p class="card-text text-danger" *ngIf="!product.stock">
+                            <i class="bi bi-x-circle-fill me-2"></i> Sold
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{product.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="wrap-card">
+        <div class="card shadow">
+            <h4 class="card-header text-center">Sign Up Form</h4>
+            <div class="card-body">
+                <form [formGroup]="registerFormGroup" (ngSubmit)="onRegister($event)" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="email" class="form-control" placeholder="user@email.com" formControlName="email">
+                        </div>
+                        <ng-container *ngIf="email?.errors && email?.touched; else emailValid">
+                            <div class="text-danger">
+                                <span *ngIf="email?.hasError('required')">
+                                    Required input
+                                </span>
+                                <span *ngIf="email?.hasError('email')">
+                                    Invalid input format
+                                </span>
+                                <span *ngIf="email?.hasError('repeated')">
+                                    Email is already in use
+                                </span>
+                            </div>
+                        </ng-container>
+                        <ng-template #emailValid>
+                            <div class="text-success" *ngIf="email?.valid && !email?.pristine">
+                                <span>Valid email</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" placeholder="password" formControlName="password">
+                        </div>
+                        <ng-container *ngIf="password?.errors && password?.touched; else passwordValid">
+                            <div class="text-danger">
+                                <span *ngIf="password?.hasError('required')">
+                                    Required input
+                                </span>
+                                <span *ngIf="password?.hasError('minlength')">
+                                    The min of characters is 8
+                                </span>
+                                <span *ngIf="password?.hasError('maxlength')">
+                                    The max of characters is 16
+                                </span>
+                            </div>
+                        </ng-container>
+                        <ng-template #passwordValid>
+                            <div class="text-success" *ngIf="password?.valid && !password?.pristine">
+                                <span>Valid password</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Username" formControlName="username">
+                        </div>
+                        <ng-container *ngIf="username?.errors && username?.touched; else usernameValid">
+                            <div class="text-danger">
+                                <span *ngIf="username?.hasError('required')">
+                                    Required input
+                                </span>
+                                <span *ngIf="username?.hasError('minlength')">
+                                    The min of characters is 4
+                                </span>
+                                <span *ngIf="username?.hasError('maxlength')">
+                                    The max of characters is 16
+                                </span>
+                            </div>
+                        </ng-container>
+                        <ng-template #usernameValid>
+                            <div class="text-success" *ngIf="username?.valid && !username?.pristine">
+                                <span>Valid username</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <div class="col-md-12 d-grid">
+                            <button class="btn btn-primary" type="submit" [disabled]="!registerFormGroup.valid">Sing Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

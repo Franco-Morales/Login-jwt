@@ -1,0 +1,31 @@
+<ng-container *ngIf="isLoading; else loaded">
+    <app-spinner></app-spinner>
+</ng-container>
+<ng-template #loaded>
+    <div class="container">
+        <div class="row">
+            <div class="p-5 mb-4 bg-light rounded-3 mt-5 shadow-sm">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">Welcome, @{{username}}</h1>
+                    <p class="col-md-8 fs-4">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum ullam eveniet illo, corporis asperiores accusantium alias ducimus aperiam nihil aliquid. Magnam, consectetur! Facilis nisi est saepe asperiores blanditiis a dolores.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 my-5">
+            <div class="col" *ngFor="let product of products">
+                <div class="card h-100 shadow">
+                    <img [src]="product.imgUrl" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">$ {{product.price}}</p>
+                    </div>
+                    <div class="card-body d-grid">
+                        <a class="btn btn-primary" [routerLink]="['product', '624edfdabb4bb65f76bcafea']">More details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
