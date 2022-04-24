@@ -1,3 +1,5 @@
+import { CustomError } from "../utils/customError";
+
 export const errorHandler = async (error, req, res, next) => {
     res.status(error.status || 500).send({
         error: {
@@ -8,10 +10,7 @@ export const errorHandler = async (error, req, res, next) => {
 }
 
 export const error404Handler = async (req, res, next) => {
-    let error = new Error("not found");
-    error.status = 404;
-
-    next(error);
+    next( new CustomError("Not found", 404) );
 }
 
 

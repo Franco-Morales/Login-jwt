@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+
 import { Auth } from '../models/auth.interface';
 import { User } from '../models/user.interface';
 import { helper } from "./auth.helper";
@@ -31,7 +32,7 @@ export class AuthService {
   }
 
   public loggIn(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${environment.api}/auth/loggin`, { email, password})
+    return this.http.post<User>(`${environment.api}/auth/loggin`, { email, password },{ withCredentials: true })
     .pipe(
       map( resp => {
         this.setAuth(resp)
@@ -41,11 +42,16 @@ export class AuthService {
   }
 
   public logout(): void {
-    this.setAuth();
-    this.router.navigate(["loggin"]);
+    this.http.post<any>(`${environment.api}/auth/logout`,{ }, { withCredentials: true })
+    .subscribe(
+      resp => {
+        this.setAuth();
+        this.router.navigate(["loggin"]);
+      }
+    );
   }
 
-  private setAuth(authObj: any = null): void {
+  public setAuth(authObj: any = null): void {
     this.authSubject.next(authObj);
   }
   

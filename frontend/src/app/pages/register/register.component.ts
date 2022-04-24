@@ -37,8 +37,8 @@ export class RegisterComponent implements OnInit {
       try {
         const resp = await lastValueFrom(this.authSvc.signUp(email, password, username));
         if(resp) {
-          this.toastSvc.toast("Success Sign Up !","success");
-          this.router.navigate([""]);
+          this.toastSvc.toast("Please login","info");
+          this.router.navigate(["/loggin"]);
         }
         
       } catch (err: any) {

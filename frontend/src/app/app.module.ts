@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -21,8 +21,8 @@ import { DetailComponent } from './pages/detail/detail.component';
 // Generic Page
 import { ErrorComponent } from './pages/error/error.component';
 // Http Interceptor
-import { TokenInterceptorService } from './interceptors/token-interceptor.service';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 
 
 @NgModule({
@@ -44,17 +44,10 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorInterceptor,
-    multi: true
-  }
-],
+  providers: [
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

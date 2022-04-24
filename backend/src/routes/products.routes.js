@@ -3,11 +3,13 @@ import { Router } from "express";
 import { getAllProducts, getOneById } from "../controllers/products.controller";
 import { isAuth } from "../middlewares/isAuth";
 
+
 const router = Router();
 
+router.use("/products", isAuth);
 
-router.get("/products", isAuth, getAllProducts);
-router.get("/products/:id", isAuth, getOneById);
+router.get("/products", getAllProducts);
+router.get("/products/:id", getOneById);
 
 
 export default router;

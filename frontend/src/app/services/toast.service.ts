@@ -17,6 +17,7 @@ export class ToastService {
       const switchType: any = {
         "success": () => this.toastrSvc.success(msg, "", this.opts),
         "info": () => this.toastrSvc.info(msg, "", this.opts),
+        "warning": () => this.toastrSvc.warning(msg, "", this.opts),
         "error": () => this.toastrSvc.error(msg, "", this.opts)
       }
       switchType[type]();

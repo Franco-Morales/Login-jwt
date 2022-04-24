@@ -30,6 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
 
     this.subsAuth = this.authSvc.auth$.subscribe( auth => {
+      console.log("auth => ", auth);
+      
       this.username = auth?.username || "";
     });
   }

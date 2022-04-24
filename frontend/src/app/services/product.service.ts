@@ -16,11 +16,11 @@ export class ProductService {
 
 
   public getAllProducts(): Observable<any> {
-    return this.http.get<any[]>(`${environment.api}/products`);
+    return this.http.get<any[]>(`${environment.api}/products`, { withCredentials: true });
   }
 
 
   public getOneProduct(id: string): Observable<any> {
-    return this.http.get<any>(`${environment.api}/products/${id}`);
+    return this.http.get<any>(`${environment.api}/products/${id}`, { withCredentials: true });
   }
 }

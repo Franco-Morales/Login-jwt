@@ -11,7 +11,13 @@ Ejemplo de backend utilizando `Json Web Token` como método de autenticación. C
 - **Dotenv** 
 - **Express-validator** 
 - **JsonWebToken** 
+- **Cookie-parser**
 
 ## Variables de entorno
 
 El proyecto utiliza `.env` para guardar 'informacion sensible'.
+
+
+## Documentación
+
+* [Refresh Token Bakend](https://github.com/scalablescripts/node-auth-refresh)
